@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reeflect is an archive of research, scientific papers, studies and findings of researchers. This archive and the data hosted will be developed into a searchable archive that will be simple, easy to use, and highly accessible to those that wish to use it.">
+  <meta name="keywords" content="Reeflect, research, scientific papers, studies, archive, searchable, accessible">
+  <meta name="author" content="Reeflect Research Archive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:;">
+  <title>Reeflect - Research Archive</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header role="banner">
+    <div class="header-container">
+      <div class="logo-section">
+        <div class="logo-icon" aria-hidden="true">🔬</div>
+        <div class="logo-text">
+          <h1>Reeflect</h1>
+          <p class="tagline">Research Archive</p>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#search-section" class="nav-link active">Search</a></li>
+          <li><a href="#documents-section" class="nav-link">Documents</a></li>
+          <li><a href="#about-section" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section with Quote -->
+  <section class="hero-section" aria-label="Welcome section">
+    <div class="container">
+      <div class="hero-content">
+        <h2 class="hero-title">Explore Research. Discover Knowledge.</h2>
+        <blockquote class="hero-quote" cite="https://www.noaa.gov/education/feature-stories/dr-sylvia-earle">
+          <p>"...reflect on the past, to assess the present and imagine the future."</p>
+          <footer>— Dr. Sylvia Earle</footer>
+        </blockquote>
+        <p class="hero-description">Reeflect is an archive of research, scientific papers, studies and findings of researchers. This archive and the data hosted will be developed into a searchable archive that will be simple, easy to use, and highly accessible to those that wish to use it.</p>
+      </div>
+    </div>
+  </section>
+
+  <main id="main-content" role="main">
+    <!-- Search Section -->
+    <section id="search-section" class="search-section" aria-labelledby="search-heading">
+      <div class="container">
+        <h2 id="search-heading">Search Documents</h2>
+        <p class="section-description">Search through our comprehensive archive of research papers from the Research Papers repository.</p>
+        
+        <div class="search-container">
+          <form id="searchForm" role="search" aria-label="Document search">
+            <div class="search-input-wrapper">
+              <label for="searchInput" class="sr-only">Search documents</label>
+              <input 
+                type="search" 
+                id="searchInput" 
+                name="search" 
+                placeholder="Search by title, researcher, category, year, subject, or content..."
+                autocomplete="off"
+                aria-describedby="searchHelp"
+                required
+              >
+              <button type="submit" class="search-button" aria-label="Search">
+                <span aria-hidden="true">🔍</span>
+                <span class="sr-only">Search</span>
+              </button>
+              <button type="button" id="clearSearch" class="clear-button" aria-label="Clear search" title="Clear search" style="display: none;">
+                <span aria-hidden="true">✕</span>
+              </button>
+            </div>
+          </form>
+          
+          <div id="searchHelp" class="search-help" role="region" aria-label="Search help and examples">
+            <h3>Search Tips & Examples</h3>
+            <p class="search-help-intro">Use these examples to efficiently search through the Research Papers archive:</p>
+            <div class="search-examples">
+              <div class="example-item">
+                <strong>Basic Search:</strong> Type any keyword to search all fields
+                <code>climate change</code>
+              </div>
+              <div class="example-item">
+                <strong>Exact Phrase:</strong> Use quotes for exact matches
+                <code>"machine learning"</code>
+              </div>
+              <div class="example-item">
+                <strong>Multiple Terms:</strong> All terms must match (AND logic)
+                <code>quantum physics 2023</code>
+              </div>
+              <div class="example-item">
+                <strong>Category Filter:</strong> Use "category:" prefix
+                <code>category:biology</code>
+              </div>
+              <div class="example-item">
+                <strong>Year Filter:</strong> Use "year:" prefix
+                <code>year:2023</code>
+              </div>
+              <div class="example-item">
+                <strong>Researcher Filter:</strong> Use "researcher:" prefix
+                <code>researcher:smith</code>
+              </div>
+              <div class="example-item">
+                <strong>Subject Filter:</strong> Use "subject:" prefix
+                <code>subject:neuroscience</code>
+              </div>
+              <div class="example-item">
+                <strong>Combined Filters:</strong> Combine multiple filters
+                <code>category:physics year:2023 quantum</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Panel -->
+        <div class="filter-panel" id="filterPanel">
+          <div class="filter-header">
+            <h3>Advanced Filters</h3>
+            <button id="toggleFilters" class="toggle-filters-btn" aria-expanded="true" aria-controls="filterContent">
+              <span>Show/Hide Filters</span>
+              <span class="toggle-icon" aria-hidden="true">▼</span>
+            </button>
+          </div>
+          <div id="filterContent" class="filter-content">
+            <div class="filter-group">
+              <label for="filterTitle">Title</label>
+              <input type="text" id="filterTitle" placeholder="Filter by title..." aria-label="Filter by title">
+            </div>
+            <div class="filter-group">
+              <label for="filterResearcher">Researcher Names</label>
+              <input type="text" id="filterResearcher" placeholder="Filter by researcher..." aria-label="Filter by researcher names">
+            </div>
+            <div class="filter-group">
+              <label for="filterCategory">Category</label>
+              <select id="filterCategory" aria-label="Filter by category">
+                <option value="">All Categories</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="filterYear">Year</label>
+              <select id="filterYear" aria-label="Filter by year">
+                <option value="">All Years</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="filterSubject">Subject</label>
+              <select id="filterSubject" aria-label="Filter by subject">
+                <option value="">All Subjects</option>
+              </select>
+            </div>
+            <div class="filter-actions">
+              <button id="applyFilters" class="btn btn-primary">Apply Filters</button>
+              <button id="resetFilters" class="btn btn-secondary">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Info -->
+        <div id="resultsInfo" class="results-info" aria-live="polite" role="status">
+          <span id="resultsCount">Loading documents from Research Papers...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="documents-section" class="documents-section" aria-labelledby="documents-heading">
+      <div class="container">
+        <h2 id="documents-heading">Documents from Research Papers</h2>
+        <div id="documentsGrid" class="documents-grid" role="list" aria-label="Document list">
+          <!-- Documents will be dynamically inserted here -->
+        </div>
+        <div id="noResults" class="no-results" style="display: none;">
+          <span class="no-results-icon" aria-hidden="true">🔍</span>
+          <h3>No documents found</h3>
+          <p>Try adjusting your search terms or filters.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about-section" class="about-section" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 id="about-heading">About Reeflect</h2>
+        <div class="about-content">
+          <p class="about-description">Reeflect is an archive of research, scientific papers, studies and findings of researchers. This archive and the data hosted will be developed into a searchable archive that will be simple, easy to use, and highly accessible to those that wish to use it.</p>
+          
+          <blockquote class="about-quote">
+            <p>"...reflect on the past, to assess the present and imagine the future."</p>
+            <cite>— Dr. Sylvia Earle</cite>
+          </blockquote>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon" aria-hidden="true">🔍</div>
+              <h3>Full-Text Search</h3>
+              <p>Search across all document content, metadata, and related references in the Research Papers repository.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon" aria-hidden="true">🏷️</div>
+              <h3>Advanced Filtering</h3>
+              <p>Filter by title, researcher, category, year, and subject.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon" aria-hidden="true">🔗</div>
+              <h3>Related Research</h3>
+              <p>Automatically discover related documents and citations.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon" aria-hidden="true">♿</div>
+              <h3>Accessible</h3>
+              <p>Designed with accessibility in mind for all users.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon" aria-hidden="true">🔒</div>
+              <h3>Secure</h3>
+              <p>OWASP-compliant security for all inputs and operations.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon" aria-hidden="true">📁</div>
+              <h3>Research Papers</h3>
+              <p>All documents sourced from the Research Papers repository folder.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Document Detail Modal -->
+  <div id="documentModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-overlay" aria-hidden="true"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">
+        <span aria-hidden="true">✕</span>
+      </button>
+      <div class="modal-body">
+        <div class="modal-image-container">
+          <img id="modalImage" src="" alt="Document first page preview" class="modal-image">
+        </div>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-meta">
+          <div class="meta-item">
+            <span class="meta-label">Researchers:</span>
+            <span id="modalResearchers" class="meta-value"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Year Published:</span>
+            <span id="modalYear" class="meta-value"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Published In:</span>
+            <span id="modalPublishedIn" class="meta-value"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Category:</span>
+            <span id="modalCategory" class="meta-value"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Subject:</span>
+            <span id="modalSubject" class="meta-value"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Keywords:</span>
+            <span id="modalKeywords" class="meta-value"></span>
+          </div>
+        </div>
+        <div class="modal-summary">
+          <h3>Summary</h3>
+          <p id="modalSummary"></p>
+        </div>
+        <div class="modal-related">
+          <h3>Related Documents</h3>
+          <div id="modalRelated" class="related-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tooltip for hover preview -->
+  <div id="hoverTooltip" class="hover-tooltip" role="tooltip" aria-hidden="true">
+    <div class="tooltip-content">
+      <div class="tooltip-image-container">
+        <img id="tooltipImage" src="" alt="Document preview" class="tooltip-image">
+      </div>
+      <h3 id="tooltipTitle"></h3>
+      <div class="tooltip-meta">
+        <div class="tooltip-meta-item">
+          <span class="tooltip-label">Researchers:</span>
+          <span id="tooltipResearchers" class="tooltip-value"></span>
+        </div>
+        <div class="tooltip-meta-item">
+          <span class="tooltip-label">Year:</span>
+          <span id="tooltipYear" class="tooltip-value"></span>
+        </div>
+        <div class="tooltip-meta-item">
+          <span class="tooltip-label">Published In:</span>
+          <span id="tooltipPublishedIn" class="tooltip-value"></span>
+        </div>
+        <div class="tooltip-meta-item">
+          <span class="tooltip-label">Category:</span>
+          <span id="tooltipCategory" class="tooltip-value"></span>
+        </div>
+        <div class="tooltip-meta-item">
+          <span class="tooltip-label">Keywords:</span>
+          <span id="tooltipKeywords" class="tooltip-value"></span>
+        </div>
+      </div>
+      <div class="tooltip-summary">
+        <h4>Summary</h4>
+        <p id="tooltipSummary"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <p>&copy; 2024 Reeflect Research Archive. Built for accessibility and security.</p>
+      <p class="footer-note">Source: Research Papers repository</p>
+    </div>
+  </footer>
+
+  <script src="data/documents.js"></script>
+  <script src="utils/sanitizer.js"></script>
+  <script src="utils/searchEngine.js"></script>
+  <script src="utils/filterEngine.js"></script>
+  <script src="utils/summaryGenerator.js"></script>
+  <script src="utils/relatedDocuments.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
